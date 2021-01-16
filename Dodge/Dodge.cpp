@@ -1,0 +1,66 @@
+﻿#pragma warning(disable : 4996)
+
+#include "Dodge.h"
+
+#include "World.h"
+#include "DisplayManager.h"
+#include "Player.h"
+#include "Obstacle.h"
+
+#include <conio.h>
+#include <iostream>
+
+#include <thread>
+#include <chrono>
+
+
+using namespace std;
+
+
+const int fps = 6;
+
+Player p;
+Obstacle ob[10];
+
+
+void Start() {
+	DisplayManager::GameScreen(p);
+	DisplayManager::Spawn(&p);
+	p.Awake();
+
+	for(Obstacle& e : ob) {
+		e.randomSpawn();
+		DisplayManager::Spawn(&e);
+		e.Awake();
+	}
+}
+
+bool Update() {
+	char key = '\0';
+	if(kbhit()) {
+		key = getch();
+	}
+
+	switch(key) {
+		case 'q':
+		case 'e':
+			return false;
+	}
+
+	for(Obstacle& e : ob) {
+		e.Move();
+	}
+
+	return true;
+}
+
+
+void Dodge::Play() {
+	Start();
+	while(Update() == true) {
+		this_thread::sleep_for(chrono::milliseconds(1000 / fps));
+	}
+
+	DisplayManager::gotoxy(0, World::Max_y + 4);
+	cout << "게임이 종료되었습니다." << endl;
+}
