@@ -1,6 +1,9 @@
 #include "Player.h"
 
 #include "World.h"
+#include "DisplayManager.h"
+
+#include <iostream>
 
 
 Player::Player() :
@@ -16,9 +19,58 @@ Player::Player(int max_hp) :
 }
 
 
-char Player::character() const {
-	return shape;
+
+void Player::Move(char dir) {
+	if(is_sleep) {
+		return;
+	}
+
+	if(x() < World::Min_x || x() > World::Max_x || y() < World::Min_y || y() > World::Max_y) {
+		Sleep();
+		return;
+	}
+
+
+	DisplayManager::gotoxy(position);
+	std::cout << ' ';
+
+
+	switch(dir) {
+		case 'w':
+			position.y--;
+			break;
+		case 'a':
+			position.x--;
+			break;
+		case 's':
+			position.y++;
+			break;
+		case 'd':
+			position.x++;
+			break;
+		default:
+			std::cout << "An Error Occurred - Invalid input" << std::endl;
+	}
+
+
+	if(x() < World::Min_x) {
+		position.x++;
+	}
+	else if(x() > World::Max_x) {
+		position.x--;
+	}
+	
+	if(y() < World::Min_y) {
+		position.y++;
+	}
+	else if(y() > World::Max_y) {
+		position.y--;
+	}
+
+
+	Update();
 }
+
 
 Position Player::Pos() const {
 	return position;

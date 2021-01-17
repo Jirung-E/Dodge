@@ -12,7 +12,10 @@ public:
 	Player();
 	Player(int hp);
 
-	char character() const;	// temp
+
+	void Move() = delete;
+	void Move(char dir);
+
 	Position Pos() const;
 
 	int HP() const;
