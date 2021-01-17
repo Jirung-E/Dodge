@@ -42,6 +42,12 @@ bool Update() {
 	}
 
 	switch(key) {
+		case 'w':
+		case 'a':
+		case 's':
+		case 'd':
+			p.Move(key);
+			break;
 		case 'q':
 		case 'e':
 			return false;
