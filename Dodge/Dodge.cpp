@@ -63,6 +63,7 @@ bool Update() {
 
 void Dodge::Play() {
 	Start();
+
 	while(Update() == true) {
 		this_thread::sleep_for(chrono::milliseconds(1000 / fps));
 	}
