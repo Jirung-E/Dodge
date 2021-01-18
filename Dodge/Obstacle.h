@@ -7,6 +7,8 @@
 
 class Obstacle : public GameObject {
 	const char obstacle_shape = '*';
+
+protected:
 	int move_speed;	// n character / 1 second
 	std::chrono::system_clock::time_point last_move;
 
