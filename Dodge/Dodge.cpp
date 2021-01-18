@@ -6,6 +6,7 @@
 #include "DisplayManager.h"
 #include "Player.h"
 #include "Obstacle.h"
+#include "Coin.h"
 
 #include <conio.h>
 #include <iostream>
@@ -21,6 +22,7 @@ const int fps = 60;
 
 Player p;
 Obstacle ob[10];
+Coin c[5];
 
 
 void Start() {
@@ -29,6 +31,12 @@ void Start() {
 	p.Awake();
 
 	for(Obstacle& e : ob) {
+		e.randomSpawn();
+		DisplayManager::Spawn(&e);
+		e.Awake();
+	}
+
+	for(Coin& e : c) {
 		e.randomSpawn();
 		DisplayManager::Spawn(&e);
 		e.Awake();
@@ -54,6 +62,9 @@ bool Update() {
 	}
 
 	for(Obstacle& e : ob) {
+		e.Move();
+	}
+	for(Coin& e : c) {
 		e.Move();
 	}
 
