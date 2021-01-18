@@ -17,7 +17,7 @@
 using namespace std;
 
 
-const int fps = 6;
+const int fps = 60;
 
 Player p;
 Obstacle ob[10];
