@@ -41,10 +41,10 @@ void DisplayManager::GameScreen::Update(Player p) {
 	gotoxy(World::Min_x + 8, World::Max_y + 2);
 	//cout << p.HP() << " / " << p.MaxHP() << endl;
 	//cout << p.Coins() << endl;
-	printf("%d / %d\n", p.HP(), p.MaxHP());
+	printf("%d / %d  ", p.HP(), p.MaxHP());
 
 	gotoxy(World::Min_x + 8, World::Max_y + 3);
-	printf("%d\n", p.Coins());
+	printf("%d  ", p.Coins());
 }
 
 void DisplayManager::Spawn(GameObject* go) {
