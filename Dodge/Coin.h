@@ -8,4 +8,6 @@ class Coin : public Obstacle {
 
 public:
 	Coin();
+
+	void Interaction(GameObject* go);
 };
