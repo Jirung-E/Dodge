@@ -61,5 +61,12 @@ void Obstacle::Move() {
 
 	position.y++;
 
+	if(IsCollide()) {
+		if(dynamic_cast<Player*>(World::world[x()][y()])) {
+			Sleep();
+			return;
+		}
+	}
+
 	Update();
 }
