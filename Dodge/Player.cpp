@@ -105,10 +105,10 @@ void Player::Interaction(GameObject* go) {
 		return;
 	}
 
-	if(dynamic_cast<Obstacle*>(go)) {
-		getDmg(1);
-	}
-	else if(dynamic_cast<Coin*>(go)) {
+	if(dynamic_cast<Coin*>(go)) {
 		coin++;
+	}
+	else if(dynamic_cast<Obstacle*>(go)) {
+		getDmg(1);
 	}
 }
