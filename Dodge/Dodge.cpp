@@ -26,7 +26,7 @@ Coin c[5];
 
 
 void Start() {
-	DisplayManager::GameScreen(p);
+	DisplayManager::GameScreen::Start(p);
 	DisplayManager::Spawn(&p);
 	p.Awake();
 
@@ -67,6 +67,9 @@ bool Update() {
 	for(Coin& e : c) {
 		e.Move();
 	}
+
+	p.Update();
+	DisplayManager::GameScreen::Update(p);
 
 	return true;
 }
