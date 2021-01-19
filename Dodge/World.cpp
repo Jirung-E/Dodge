@@ -1,4 +1,4 @@
 #include "World.h"
 
 
-GameObject* world[World::Width][World::Height];
+GameObject* World::world[World::Width][World::Height];
