@@ -23,6 +23,7 @@ public:
 
 	int HP() const;
 	int MaxHP() const;
+	int Coins() const;
 
 	void Interaction(GameObject* go);
 };

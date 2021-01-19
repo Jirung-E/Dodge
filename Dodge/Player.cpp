@@ -95,6 +95,10 @@ int Player::MaxHP() const {
 	return max_hp;
 }
 
+int Player::Coins() const {
+	return coin;
+}
+
 
 void Player::Interaction(GameObject* go) {
 	if(is_sleep) {
