@@ -62,11 +62,21 @@ void Obstacle::Move() {
 	position.y++;
 
 	if(IsCollide()) {
-		if(dynamic_cast<Player*>(World::world[x()][y()])) {
-			Sleep();
-			return;
-		}
+		Interaction(World::world[x()][y()]);
+		return;
 	}
 
 	Update();
+}
+
+
+void Obstacle::Interaction(GameObject* go) {
+	if(is_sleep) {
+		return;
+	}
+
+	if(dynamic_cast<Player*>(go)) {
+		dynamic_cast<Player*>(go)->Interaction(this);
+		Sleep();
+	}
 }

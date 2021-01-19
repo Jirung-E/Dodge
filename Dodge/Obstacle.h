@@ -19,4 +19,7 @@ public:
 	void randomMoveSpeed();
 
 	void Move();
+
+
+	void Interaction(GameObject* go);
 };
