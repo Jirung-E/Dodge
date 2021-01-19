@@ -72,6 +72,8 @@ bool GameObject::IsCollide() const {
 	if(World::world[x()][y()] != nullptr) {
 		return true;
 	}
+
+	return false;
 }
 
 

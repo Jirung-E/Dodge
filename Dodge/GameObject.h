@@ -20,7 +20,7 @@ public:
 
 	void Move();
 
-	bool IsCollide() const;
+	virtual bool IsCollide() const;
 
 
 	int x() const;
