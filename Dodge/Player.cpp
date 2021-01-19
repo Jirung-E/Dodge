@@ -2,20 +2,31 @@
 
 #include "World.h"
 #include "DisplayManager.h"
+#include "Obstacle.h"
+#include "Coin.h"
 
 #include <iostream>
 
 
 Player::Player() :
 	GameObject(player_shape, { World::Min_x + World::Width / 2, World::Min_y + World::Height / 2 }),
-	hp { 10 }, max_hp { 10 } {
+	hp { 10 }, max_hp { 10 }, coin { 0 } {
 	shape = player_shape;
 }
 
 Player::Player(int max_hp) :
 	GameObject(player_shape, { World::Min_x + World::Width / 2, World::Min_y + World::Height / 2 }),
-	hp { max_hp }, max_hp { max_hp } {
+	hp { max_hp }, max_hp { max_hp }, coin { 0 } {
 	shape = player_shape;
+}
+
+
+void Player::getDmg(int dmg) {
+	hp -= dmg;
+	if(hp <= 0) {
+		hp = 0;
+		Sleep();
+	}
 }
 
 
@@ -82,4 +93,18 @@ int Player::HP() const {
 
 int Player::MaxHP() const {
 	return max_hp;
+}
+
+
+void Player::Interaction(GameObject* go) {
+	if(is_sleep) {
+		return;
+	}
+
+	if(dynamic_cast<Obstacle*>(go)) {
+		getDmg(1);
+	}
+	else if(dynamic_cast<Coin*>(go)) {
+		coin++;
+	}
 }

@@ -5,8 +5,11 @@
 class Player : public GameObject {
 	int hp;
 	int max_hp;
+	int coin;
 
 	const char player_shape = '&';
+
+	void getDmg(int dmg);
 
 public:
 	Player();
@@ -20,4 +23,6 @@ public:
 
 	int HP() const;
 	int MaxHP() const;
+
+	void Interaction(GameObject* go);
 };
