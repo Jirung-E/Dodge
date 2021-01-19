@@ -29,11 +29,22 @@ void seperateLine() {
 
 using namespace DisplayManager;
 
-void DisplayManager::GameScreen(Player p) {
+void DisplayManager::GameScreen::Start(Player p) {
 	gotoxy(World::Min_x, World::Max_y + 1);
 	seperateLine();
-	cout << "HP\t" << p.HP() << " / " << p.MaxHP() << endl;
+	cout << " HP " << "    " << p.HP() << " / " << p.MaxHP() << endl;
+	cout << "Coin" << "    " << p.Coins() << endl;
 	seperateLine();
+}
+
+void DisplayManager::GameScreen::Update(Player p) {
+	gotoxy(World::Min_x + 8, World::Max_y + 2);
+	//cout << p.HP() << " / " << p.MaxHP() << endl;
+	//cout << p.Coins() << endl;
+	printf("%d / %d  ", p.HP(), p.MaxHP());
+
+	gotoxy(World::Min_x + 8, World::Max_y + 3);
+	printf("%d  ", p.Coins());
 }
 
 void DisplayManager::Spawn(GameObject* go) {

@@ -2,6 +2,7 @@
 
 #include "Position.h"
 
+
 class GameObject {
 protected:
 	char shape;
@@ -18,6 +19,8 @@ public:
 
 
 	void Move();
+
+	virtual bool IsCollide() const;
 
 
 	int x() const;
