@@ -82,6 +82,6 @@ void Dodge::Play() {
 		this_thread::sleep_for(chrono::milliseconds(1000 / fps));
 	}
 
-	DisplayManager::gotoxy(0, World::Max_y + 4);
+	DisplayManager::gotoxy(0, World::Max_y + 6);
 	cout << "게임이 종료되었습니다." << endl;
 }
