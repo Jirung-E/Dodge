@@ -4,6 +4,7 @@
 #include "DisplayManager.h"
 #include "Obstacle.h"
 #include "Coin.h"
+#include "HealPack.h"
 
 #include <iostream>
 
@@ -107,6 +108,12 @@ void Player::Interaction(GameObject* go) {
 
 	if(dynamic_cast<Coin*>(go)) {
 		coin++;
+	}
+	else if(dynamic_cast<HealPack*>(go)) {
+		hp++;
+		if(hp > max_hp) {
+			hp = max_hp;
+		}
 	}
 	else if(dynamic_cast<Obstacle*>(go)) {
 		getDmg(1);
