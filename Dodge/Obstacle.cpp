@@ -57,6 +57,7 @@ void Obstacle::Move() {
 
 	DisplayManager::gotoxy(position);
 	std::cout << ' ';
+	World::world[x() - World::Min_x][y() - World::Min_y] = nullptr;
 
 
 	position.y++;
