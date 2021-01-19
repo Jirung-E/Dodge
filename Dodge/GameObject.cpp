@@ -35,7 +35,7 @@ void GameObject::Update() {
 	}
 	
 	
-	World::world[x()][y()] = this;
+	World::world[x() - World::Min_x][y() - World::Min_y] = this;
 	DisplayManager::gotoxy(position);
 	std::cout << shape;
 }
@@ -54,12 +54,12 @@ void GameObject::Move() {
 
 	DisplayManager::gotoxy(position);
 	std::cout << ' ';
-
+	World::world[x() - World::Min_x][y() - World::Min_y] = nullptr;
 
 	position.y++;
 
 	if(IsCollide()) {
-		if(dynamic_cast<Player*>(World::world[x()][y()])) {
+		if(dynamic_cast<Player*>(World::world[x() - World::Min_x][y() - World::Min_y])) {
 			Sleep();
 			return;
 		}
@@ -69,7 +69,7 @@ void GameObject::Move() {
 }
 
 bool GameObject::IsCollide() const {
-	if(World::world[x()][y()] != nullptr) {
+	if(World::world[x() - World::Min_x][y() - World::Min_y] != nullptr) {
 		return true;
 	}
 
