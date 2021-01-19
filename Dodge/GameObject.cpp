@@ -33,7 +33,9 @@ void GameObject::Update() {
 		Sleep();
 		return;
 	}
-
+	
+	
+	World::world[x()][y()] = this;
 	DisplayManager::gotoxy(position);
 	std::cout << shape;
 }
@@ -56,7 +58,20 @@ void GameObject::Move() {
 
 	position.y++;
 
+	if(IsCollide()) {
+		if(dynamic_cast<Player*>(World::world[x()][y()])) {
+			Sleep();
+			return;
+		}
+	}
+
 	Update();
+}
+
+bool GameObject::IsCollide() const {
+	if(World::world[x()][y()] != nullptr) {
+		return true;
+	}
 }
 
 
