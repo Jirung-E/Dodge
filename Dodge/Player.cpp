@@ -45,6 +45,7 @@ void Player::Move(char dir) {
 
 	DisplayManager::gotoxy(position);
 	std::cout << ' ';
+	World::world[x() - World::Min_x][y() - World::Min_y] = nullptr;
 
 
 	switch(dir) {
