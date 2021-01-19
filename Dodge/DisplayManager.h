@@ -11,6 +11,10 @@ namespace DisplayManager {
 	void gotoxy(SHORT x, SHORT y);
 	void gotoxy(Position pos);
 
-	void GameScreen(Player p);
-	void Spawn(GameObject* go);
+	namespace GameScreen {
+		void Start(Player p);
+		void Update(Player p);
+	}
+
+	void Spawn(GameObject* go);		// temp
 }
